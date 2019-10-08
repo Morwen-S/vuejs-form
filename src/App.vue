@@ -1,28 +1,65 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <button v-on:click="component='registration-form'">Sign up</button>
+    <button v-on:click="component='login-form'">Login</button>
+    <component v-bind:is="component"></component>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import registrationForm from './components/registrationForm.vue'
+import loginForm from './components/loginForm.vue'
 
 export default {
-  name: 'app',
   components: {
-    HelloWorld
-  }
+    'registration-form': registrationForm,
+    'login-form': loginForm,
+  },
+  data () {
+    return {
+      component: 'login-form',
+    }
+  },
+  methods: {
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+.input-form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid black;
+  font-size: 20px;
+}
+form > div{
+  padding: 20px;
+  background: #eee;
+  margin: 10px 0;
+}
+label {
+  display: block;
+  margin-top: 10px;
+}
+select {
+  margin: 10px 0px;
+  height: 30px;
+  width: 20%;
+  font-size: 20px;
+}
+input {
+  width: 100%;
+  height: 20px;
+}
+button {
+  font-size: 20px;
+  height: 40px;
+  margin: 20px 0;
+}
+span {
+  margin-left: 20px;
+  color: red;
 }
 </style>
